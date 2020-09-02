@@ -26,7 +26,5 @@ class ArticleImagePipeline(ImagesPipeline):
         :param info:
         :return:
         """
-        for img_url in item['imgs_url']:
-            referer = item['url']
-            yield Request(img_url, meta={'item': item,
-                                         'referer': referer})
+        img_url = item['imgs_url']
+        yield Request(url= img_url, meta={'item': item})
