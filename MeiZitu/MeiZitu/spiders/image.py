@@ -55,7 +55,6 @@ class MeiZituSpider(scrapy.Spider):
             next_href = i.css('::attr(href)')
             if next_href:
                 next_url = parse.urljoin(response.url, next_href.extract_first())
-                print('next_url:{}'.format(next_url))
                 yield Request(url=next_url, callback=self.parse_detail, headers=headers)
 
 
