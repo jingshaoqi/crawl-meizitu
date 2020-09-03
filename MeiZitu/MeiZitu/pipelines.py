@@ -18,7 +18,7 @@ class ArticleImagePipeline(ImagesPipeline):
         title = item['name']
         image_guid = request.url.split('/')[-1]
         filename = 'full/{0}/{1}'.format(title, image_guid)
-        return filename
+        return title
 
     def get_media_requests(self, item, info):
         """
@@ -27,4 +27,8 @@ class ArticleImagePipeline(ImagesPipeline):
         :return:
         """
         img_url = item['imgs_url']
-        yield Request(url= img_url, meta={'item': item})
+        headers = {
+            'USER_AGENT': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:80.0) Gecko/20100101 Firefox/80.0',
+            'Referer': item['referrer']
+        }
+        yield Request(url= img_url, meta={'item': item}, headers=headers)

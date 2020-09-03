@@ -40,8 +40,10 @@ ROBOTSTXT_OBEY = False
 
 # Override the default request headers:
 #DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
+#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+#   'Accept-Language': 'en-US,en;q=0.5',
+#   'Accept-Encoding': 'gzip, deflate, br',
+#   'USER_AGENT': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:80.0) Gecko/20100101 Firefox/80.0'
 #}
 
 # Enable or disable spider middlewares
@@ -52,9 +54,9 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'MeiZitu.middlewares.MeizituDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'MeiZitu.middlewares.MeizituDownloaderMiddleware': 543,
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -63,15 +65,17 @@ ROBOTSTXT_OBEY = False
 #}
 
 # Configure item pipelines
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:80.0) Gecko/20100101 Firefox/80.0'
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'
+
 ITEM_PIPELINES = {
    'MeiZitu.pipelines.ArticleImagePipeline': 1,
    #'scrapy.pipelines.images.ImagesPipeline': 1,
 }
 IMAGES_URLS_FIELD = "imgs_url"
 project_dir = os.path.abspath(os.path.dirname(__file__))
-IMAGES_STORE = os.path.join(project_dir, 'images')
+#IMAGES_STORE = os.path.join(project_dir, 'images')
+IMAGES_STORE = './images'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True

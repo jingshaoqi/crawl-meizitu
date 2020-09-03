@@ -13,3 +13,4 @@ class MeizituItem(scrapy.Item):
     name = scrapy.Field()
     imgs_url = scrapy.Field()
     url = scrapy.Field()
+    referrer = scrapy.Field()
