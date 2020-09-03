@@ -56,6 +56,7 @@ class MeiZituSpider(scrapy.Spider):
             if next_href:
                 next_url = parse.urljoin(response.url, next_href.extract_first())
                 yield Request(url=next_url, callback=self.parse_detail, headers=headers)
+            break
 
 
 
