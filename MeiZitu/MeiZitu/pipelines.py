@@ -17,8 +17,8 @@ class ArticleImagePipeline(ImagesPipeline):
         item = request.meta['item']
         title = item['name']
         image_guid = request.url.split('/')[-1]
-        filename = 'full/{0}/{1}'.format(title, image_guid)
-        return title
+        filename = '{0}/{1}'.format(title, image_guid)
+        return filename
 
     def get_media_requests(self, item, info):
         """
